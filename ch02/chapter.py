@@ -129,8 +129,15 @@ from sklearn.neighbors import KNeighborsClassifier
 classifier = KNeighborsClassifier(n_neighbors=1)
 from sklearn.cross_validation import KFold
 
+# Hi, I was trying this out, had a few errors, 
+# 'from sklearn.cross_validation import KFold' is now 'from sklrean.model_selection import KFold' 
+# I couldn't pass KFold(arg1, arg2, arg3) like so, but changed it KFold(n_splits=5, shuffle=True) or KFold(5, True)
+# go to line 138
 kf = KFold(len(features), n_folds=5, shuffle=True)
 means = []
+# after I changed the top, I changed the for loop
+# 'for training,testing in kf.split(features)
+# the only changes i made to get the same output as in the book 90.5%
 for training,testing in kf:
    # We learn a model for this fold with `fit` and then apply it to the
    # testing data with `predict`:
